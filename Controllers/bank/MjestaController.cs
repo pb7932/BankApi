@@ -8,7 +8,7 @@ namespace bankApi.controllers
     public partial class MyDataController : MyBaseController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Mjesto>>> GetMjesta(Mjesto mjesto)
+        public async Task<ActionResult<List<Mjesto>>> GetMjesta()
         {
             try
             {
