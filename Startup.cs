@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using bank.model.repo;
+using bank.config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +27,14 @@ namespace bankApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //get the right repository implementation
+            var bankConfig = Configuration.GetSection("Bank:model");
+            var bank = bankConfig.Get<MyConfig>();
+            services.Configure<MyConfig>(bankConfig);
+
+            BankRepositoryFactory.init(services, bank);
+
+
             services.AddControllers();
         }
 
