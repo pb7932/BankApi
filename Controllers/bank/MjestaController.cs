@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using bank.model.model;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ namespace bankApi.controllers
         {
             try
             {
-                var mjesta = _dataRepo.MjestoList();
+                var mjesta = _dataRepo.MjestoList().Result.ToList();
 
                 return Ok(mjesta);
             }
