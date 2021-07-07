@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using bank.model.dto;
-using bank.model.model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bankApi.controllers
@@ -10,13 +7,13 @@ namespace bankApi.controllers
     public partial class MyDataController : MyBaseController
     {
         [HttpGet]
-        public async Task<ActionResult<MjestoListResponseDTO>> GetMjesta()
+        public async Task<ActionResult<ZavodListResponseDTO>> GetZavodi()
         {
             try
             {
-                var mjesta = _dataRepo.MjestoList().Result;
+                var rez = await _dataRepo.ZavodiList();
 
-                return Ok(mjesta);
+                return Ok(rez);
             }
             finally
             {
@@ -24,12 +21,12 @@ namespace bankApi.controllers
             }
         }
 
-        [HttpGet("{pbr}")]
-        public async Task<ActionResult<MjestoResponseDTO>> GetMjestoByPbr(int pbr)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ZavodResponseDTO>> GetZavodiById(int id)
         {
             try
             {
-                var rez = _dataRepo.MjestoGetById(pbr).Result;
+                var rez = await _dataRepo.ZavodGetById(id);
 
                 return Ok(rez);
             }
@@ -40,11 +37,11 @@ namespace bankApi.controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<BaseResponseDto>> MjestoSave(MjestoRequestDTO mjesto)
+        public async Task<ActionResult<BaseResponseDto>> ZavodiSave(ZavodRequestDTO zavod)
         {
             try
             {
-                var res = await _dataRepo.MjestoSave(mjesto);
+                var res = await _dataRepo.ZavodSave(zavod);
                 return Ok(res);
             }
             finally
