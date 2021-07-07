@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using bank.model.dto;
 using bank.model.model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +10,11 @@ namespace bankApi.controllers
     public partial class MyDataController : MyBaseController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Mjesto>>> GetMjesta()
+        public async Task<ActionResult<MjestoListResponseDTO>> GetMjesta()
         {
             try
             {
-                var mjesta = _dataRepo.MjestoList().Result.ToList();
+                var mjesta = _dataRepo.MjestoList().Result;
 
                 return Ok(mjesta);
             }
@@ -24,7 +25,7 @@ namespace bankApi.controllers
         }
 
         [HttpGet("{pbr}")]
-        public async Task<ActionResult<Mjesto>> GetMjestoByPbr(int pbr)
+        public async Task<ActionResult<MjestoResponseDTO>> GetMjestoByPbr(int pbr)
         {
             try
             {
@@ -39,7 +40,7 @@ namespace bankApi.controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> MjestoSave(Mjesto mjesto)
+        public async Task<ActionResult> MjestoSave(MjestoRequestDTO mjesto)
         {
             try
             {
