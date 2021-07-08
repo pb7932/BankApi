@@ -7,11 +7,11 @@ namespace bankApi.controllers
     public partial class MyDataController : MyBaseController
     {
         [HttpGet]
-        public async Task<ActionResult<ZavodListResponseDTO>> GetZavodi()
+        public async Task<ActionResult<ZadatakListResponseDTO>> GetZadaci()
         {
             try
             {
-                var rez = await _dataRepo.ZavodiList();
+                var rez = await _dataRepo.ZadatakList();
 
                 return Ok(rez);
             }
@@ -22,11 +22,11 @@ namespace bankApi.controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ZavodResponseDTO>> GetZavodiById(int id)
+        public async Task<ActionResult<ZadatakResponseDTO>> GetZadaciById(int id)
         {
             try
             {
-                var rez = await _dataRepo.ZavodGetById(id);
+                var rez = await _dataRepo.ZadatakGetById(id);
 
                 return Ok(rez);
             }
@@ -37,11 +37,11 @@ namespace bankApi.controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<BaseResponseDto>> ZavodSave(ZavodRequestDTO zavod)
+        public async Task<ActionResult<BaseResponseDto>> ZadatakSave(ZadatakRequestDTO zadatak)
         {
             try
             {
-                var res = await _dataRepo.ZavodSave(zavod);
+                var res = await _dataRepo.ZadatakSave(zadatak);
                 return Ok(res);
             }
             finally
