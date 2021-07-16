@@ -27,6 +27,17 @@ namespace bankApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //allow angular to access data
+            services.AddCors(options =>
+                options.AddPolicy("AllowMyOrigin", builder =>
+                    builder.WithOrigins("http://localhost:4200",
+                                        "https://localhost4200")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials()
+                )
+            );
+
             //get the right repository implementation
             var bankConfig = Configuration.GetSection("Bank:model");
             var bank = bankConfig.Get<MyConfig>();
@@ -47,6 +58,7 @@ namespace bankApi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("AllowMyOrigin");
 
             app.UseHttpsRedirection();
 
