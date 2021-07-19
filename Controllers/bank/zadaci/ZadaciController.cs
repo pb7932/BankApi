@@ -37,7 +37,7 @@ namespace bankApi.controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<BaseResponseDto>> ZadatakSave(ZadatakRequestDTO zadatak)
+        public async Task<ActionResult<BaseResponseDto>> ZadaciSave(ZadatakRequestDTO zadatak)
         {
             try
             {

@@ -25,7 +25,7 @@ namespace bankApi.controllers
         }
 
         [HttpGet("{pbr}")]
-        public async Task<ActionResult<MjestoResponseDTO>> GetMjestoByPbr(int pbr)
+        public async Task<ActionResult<MjestoResponseDTO>> GetMjestaByPbr(int pbr)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace bankApi.controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<BaseResponseDto>> MjestoSave(MjestoRequestDTO mjesto)
+        public async Task<ActionResult<BaseResponseDto>> MjestaSave(MjestoRequestDTO mjesto)
         {
             try
             {

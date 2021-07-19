@@ -37,7 +37,7 @@ namespace bankApi.controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<BaseResponseDto>> TransakcijaSave(TransakcijaRequestDTO transakcija)
+        public async Task<ActionResult<BaseResponseDto>> TransakcijeSave(TransakcijaRequestDTO transakcija)
         {
             try
             {
