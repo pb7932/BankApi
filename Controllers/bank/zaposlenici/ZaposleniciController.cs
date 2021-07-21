@@ -6,12 +6,13 @@ namespace bankApi.controllers
 {
     public partial class MyDataController : MyBaseController
     {
-        [HttpGet]
-        public async Task<ActionResult<ZaposlenikListResponseDTO>> GetZaposlenici()
+        [HttpPost]
+        public async Task<ActionResult<ZaposlenikListResponseDTO>> GetZaposlenici
+        (BaseRequestDto req)
         {
             try
             {
-                var rez = await _dataRepo.ZaposlenikList();
+                var rez = await _dataRepo.ZaposlenikList(req);
 
                 return Ok(rez);
             }

@@ -6,12 +6,12 @@ namespace bankApi.controllers
 {
     public partial class MyDataController : MyBaseController
     {
-        [HttpGet]
-        public async Task<ActionResult<OsobaListResponseDTO>> GetOsobe()
+        [HttpPost]
+        public async Task<ActionResult<OsobaListResponseDTO>> GetOsobe(BaseRequestDto req)
         {
             try
             {
-                var rez = await _dataRepo.OsobaList();
+                var rez = await _dataRepo.OsobaList(req);
 
                 return Ok(rez);
             }
