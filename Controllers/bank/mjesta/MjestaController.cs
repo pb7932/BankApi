@@ -24,12 +24,12 @@ namespace bankApi.controllers
             }
         }
 
-        [HttpGet("{pbr}")]
-        public async Task<ActionResult<MjestoResponseDTO>> GetMjestaByPbr(int pbr)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<MjestoResponseDTO>> GetMjestaById(int id)
         {
             try
             {
-                var rez = _dataRepo.MjestoGetById(pbr).Result;
+                var rez = _dataRepo.MjestoGetById(id).Result;
 
                 return Ok(rez);
             }
